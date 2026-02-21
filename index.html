@@ -5,6 +5,8 @@
 <title>Happy Holi</title>
 
 <style>
+
+
 body{
     margin:0;
     font-family: Arial, sans-serif;
@@ -12,22 +14,11 @@ body{
     overflow-x:hidden;
     color:white;
 
-    background: linear-gradient(-45deg,
-        #ff0080,
-        #ff8c00,
-        #40e0d0,
-        #ffea00,
-        #ff1493,
-        #00ffcc);
-
-    background-size: 400% 400%;
-    animation: holiBG 10s ease infinite;
-}
-
-@keyframes holiBG{
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
+    background: linear-gradient(
+        to right,
+        #ff512f,
+        #dd2476
+    );
 }
 /* Dark overlay */
 .overlay{
@@ -36,7 +27,7 @@ body{
     left:0;
     width:100%;
     height:100%;
-    background:rgba(0,0,0,0.3);
+    background:rgba(0,0,0,0.2);
     z-index:1;
 }
 
@@ -81,7 +72,7 @@ body{
     top:0;
     left:50%;
     transform:translateX(-50%);
-    width:200px;
+    width:80px;
     z-index:2;
 }
 
@@ -188,3 +179,4 @@ function generateLink(){
 
 </body>
 </html>
+
