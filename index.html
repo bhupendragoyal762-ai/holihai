@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Holi</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    text-align:center;
+    color:white;
+    min-height:100vh;
+    background: linear-gradient(135deg,#ff512f,#dd2476,#ff9a00);
+    overflow-x:hidden;
+}
+
+/* Developer Text */
+.developer{
+    position:fixed;
+    top:100px;
+    left:0;
+    right:0;
+	background:purple;
+	color:white;
+    font-weight:bold;
+    font-size:22px;
+    z-index:1000;
+}
+
+/* Images */
+.top-img{
+    position:fixed;
+    top:10px;
+    left:50%;
+    transform:translateX(-50%);
+    width:120px;
+}
+
+
+.left-img{
+    position:fixed;
+    left:0;
+    top:50%;
+    transform:translateY(-50%);
+    width:90px;
+}
+
+.right-img{
+    position:fixed;
+    right:0;
+    top:50%;
+    transform:translateY(-50%);
+    width:90px;
+}
+.main-img{
+width:100px;
+height:80px;
+}
+
+/* Main Content */
+.container{
+    padding:120px 20px 120px 20px;
+}
+
+h1{
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+input{
+    padding:10px;
+    width:250px;
+    border:none;
+    border-radius:6px;
+    margin:8px 0;
+}
+
+button{
+    padding:10px 20px;
+    border:none;
+    border-radius:6px;
+    background:#222;
+    color:white;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#000;
+}
+
+#linkBox{
+    margin-top:15px;
+    padding:10px;
+    background:white;
+    color:black;
+    border-radius:6px;
+    display:none;
+    word-break:break-all;
+    cursor:pointer;
+}
+
+audio{
+    display:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="developer">Developer by Bhupendra</div>
+
+<img src="top.gif" class="top-img">
+<img src="left.png" class="left-img">
+<img src="right.png" class="right-img">
+
+<audio id="bgmusic" src="song2.mp3" autoplay loop></audio>
+
+<div class="container">
+
+<h1>🌈 Happy Holi 🌈</h1>
+<img src="img1.png" class="main-img">
+<h2 id="fromText">From: Your Friend</h2>
+<h3 id="toText">To: Special Person</h3>
+
+<h3>Create Your Own Link</h3>
+
+<input type="text" id="sender" placeholder="Enter Your Name"><br>
+<input type="text" id="receiver" placeholder="Enter Receiver Number"><br>
+
+<button onclick="generateLink()">Generate Link</button>
+
+<div id="linkBox" onclick="copyLink()"></div>
+
+</div>
+
+<script>
+function generateLink(){
+    var name = document.getElementById("sender").value;
+    var number = document.getElementById("receiver").value;
+
+    if(name=="" || number==""){
+        alert("Please fill both fields");
+        return;
+    }
+
+    var link = window.location.origin + window.location.pathname + 
+    "?name=" + encodeURIComponent(name) + 
+    "&num=" + encodeURIComponent(number);
+
+    var box = document.getElementById("linkBox");
+    box.style.display="block";
+    box.innerHTML = link;
+}
+
+function copyLink(){
+    var text = document.getElementById("linkBox").innerText;
+    navigator.clipboard.writeText(text).then(function(){
+        alert("Link Copied Successfully!");
+    });
+}
+
+const params = new URLSearchParams(window.location.search);
+
+if(params.has("name")){
+    document.getElementById("fromText").innerHTML =
+    "From: " + params.get("name");
+}
+
+if(params.has("num")){
+    document.getElementById("toText").innerHTML =
+    "To: " + params.get("num");
+}
+</script>
+
+</body>
+</html>
