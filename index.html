@@ -38,13 +38,33 @@ body{
     width:120px;
 }
 
-
 .left-img{
     position:fixed;
-    left:0;
-    top:50%;
-    transform:translateY(-50%);
-    width:90px;
+    left:5px;
+    top:40%;
+    width:80px;
+    animation: floatLeft 3s ease-in-out infinite;
+}
+
+.right-img{
+    position:fixed;
+    right:5px;
+    top:40%;
+    width:80px;
+    animation: floatRight 3s ease-in-out infinite;
+}
+
+@keyframes floatLeft{
+    0%{ transform:translateY(0px); }
+    50%{ transform:translateY(-15px); }
+    100%{ transform:translateY(0px); }
+}
+
+@keyframes floatRight{
+    0%{ transform:translateY(0px); }
+    50%{ transform:translateY(15px); }
+    100%{ transform:translateY(0px); }
+}
 }
 
 .right-img{
@@ -89,6 +109,21 @@ button{
 button:hover{
     background:#000;
 }
+	
+	.music-btn{
+    background:#000;
+    color:#fff;
+    padding:10px 20px;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    margin-top:15px;
+    cursor:pointer;
+}
+.music-btn:hover{
+    background:#ffcc00;
+    color:#000;
+}
 
 #linkBox{
     margin-top:15px;
@@ -116,7 +151,11 @@ audio{
 <img src="right.png" class="right-img">
 
 <audio id="bgmusic" src="song1.mp3" autoplay loop></audio>
-<audio controls src="song2.mp3"</audio>
+<audio id="bgmusic" src="song2.mp3" loop></audio>
+
+<button onclick="playMusic()" class="music-btn">
+🎵 Play Music
+</button>
 	
 <div class="container">
 
@@ -174,10 +213,17 @@ if(params.has("num")){
     "To: " + params.get("num");
 }
 </script>
-
+	
+<script>
+function playMusic(){
+    var music = document.getElementById("bgmusic");
+    music.play();
+}
+</script>
 </body>
 
 </html>
+
 
 
 
