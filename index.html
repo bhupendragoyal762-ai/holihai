@@ -16,26 +16,23 @@ body{
     overflow-x:hidden;
 }
 
-/* Developer Text */
-.developer{
-    position:fixed;
-    top:100px;
-    left:0;
-    right:0;
-	background:purple;
-	color:white;
+	.dev-bar{
+    background:#7a008c;
+    color:white;
     font-weight:bold;
-    font-size:22px;
-    z-index:1000;
+    padding:8px 0;
+    font-size:18px;
+    margin-top:10px;
 }
+
 
 /* Images */
 .top-img{
-    position:fixed;
-    top:10px;
-    left:50%;
-    transform:translateX(-50%);
-    width:120px;
+    display:block;
+    margin:20px auto 10px auto;
+    width:180px;
+    position:relative;
+    z-index:2;
 }
 
 .left-img{
@@ -144,9 +141,12 @@ audio{
 
 <body>
 
-<div class="developer">Developer by Bhupendra</div>
+<img src="top.png" class="top-img">
 
-<img src="top.gif" class="top-img">
+<div class="dev-bar">
+Developer by Bhupendra
+</div>
+
 <img src="left.png" class="left-img">
 <img src="right.png" class="right-img">
 
@@ -223,6 +223,7 @@ function playMusic(){
 </body>
 
 </html>
+
 
 
 
