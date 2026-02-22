@@ -43,6 +43,28 @@ body{
     0%{filter:hue-rotate(0deg);}
     100%{filter:hue-rotate(360deg);}
 }
+    .dev-name{
+    font-size:18px;
+    font-weight:bold;
+    margin-top:8px;
+    letter-spacing:1px;
+    color:white;
+    text-shadow: 2px 2px 8px black;
+    animation: glowText 2s ease-in-out infinite alternate;
+}
+
+@keyframes glowText{
+    from{
+        text-shadow: 0 0 5px #fff,
+                     0 0 10px #ff00cc,
+                     0 0 15px #ff00cc;
+    }
+    to{
+        text-shadow: 0 0 10px #fff,
+                     0 0 20px #00ffcc,
+                     0 0 30px #00ffcc;
+    }
+}
 
 /* SIDE ANIMATION */
 .side{
@@ -126,11 +148,15 @@ button:hover{ background:#000; }
 <div class="circle-img">
 <img src="1021.jpg">
 </div>
+    
+<div class="dev-name">
+    Developer by Bhupendra
+    </div>
 
 <h1>🌈 Happy Holi 🌈</h1>
 
 <h2 id="messageText">
-भूपेंद्र प्रजापति की तरफ से आपको होली की हार्दिक शुभकामनाएं 🎉
+आप और आपके पूरे परिवार को हमारी तरफ से होली की हार्दिक शुभकामनाएं 🎉
 </h2>
 
 <h3>Create Your Own Link</h3>
@@ -203,3 +229,4 @@ function playMusic(){
 
 </body>
 </html>
+
