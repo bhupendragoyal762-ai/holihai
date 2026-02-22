@@ -12,99 +12,54 @@ body{
     text-align:center;
     color:white;
     min-height:100vh;
-    background: linear-gradient(135deg,#ff512f,#dd2476,#ff9a00);
+    background: url("photo.jpeg") no-repeat center center fixed;
+    background-size: cover;
     overflow-x:hidden;
 }
 
-	.dev-bar{
-    background:#7a008c;
-    color:white;
-    font-weight:bold;
-    padding:8px 0;
-    font-size:18px;
-    margin-top:10px;
+/* TOP GIF */
+.top-gif{
+    width:200px;
+    margin-top:20px;
 }
 
-
-/* Images */
-.top-img{
-    display:block;
-    margin:20px auto 10px auto;
-    width:180px;
-    position:relative;
-    z-index:2;
-}
-
-.left-img{
-    position:fixed;
-    left:5px;
-    top:40%;
-    width:80px;
-    animation: floatLeft 3s ease-in-out infinite;
-}
-
-.right-img{
-    position:fixed;
-    right:5px;
-    top:40%;
-    width:80px;
-    animation: floatRight 3s ease-in-out infinite;
-}
-
-@keyframes floatLeft{
-    0%{ transform:translateY(0px); }
-    50%{ transform:translateY(-15px); }
-    100%{ transform:translateY(0px); }
-}
-
-@keyframes floatRight{
-    0%{ transform:translateY(0px); }
-    50%{ transform:translateY(15px); }
-    100%{ transform:translateY(0px); }
-}
-
-.right-img{
-    position:fixed;
-    right:0;
-    top:50%;
-    transform:translateY(-50%);
-    width:90px;
-}
-.main-img{
-width:100px;
-height:80px;
-}
+/* Circular Profile */
 .circle-img{
     width:120px;
     height:120px;
-    margin:0 auto 15px auto;
+    margin:20px auto;
     border-radius:50%;
     padding:5px;
-    background: linear-gradient(45deg, #00ffcc, #ff00cc, #ffcc00);
-    animation: glow 2s linear infinite;
+    background: linear-gradient(45deg,#00ffcc,#ff00cc,#ffcc00);
+    animation: glow 3s linear infinite;
 }
-
 .circle-img img{
     width:100%;
     height:100%;
     border-radius:50%;
     object-fit:cover;
 }
-
 @keyframes glow{
-    0%{ filter: hue-rotate(0deg); }
-    100%{ filter: hue-rotate(360deg); }
+    0%{filter:hue-rotate(0deg);}
+    100%{filter:hue-rotate(360deg);}
 }
 
-/* Main Content */
-.container{
-    padding:120px 20px 120px 20px;
+/* SIDE ANIMATION */
+.side{
+    position:fixed;
+    top:-100px;
+    width:60px;
+    animation:fall 10s linear infinite;
+}
+.left{ left:5px; }
+.right{ right:5px; }
+
+@keyframes fall{
+    0%{ top:-100px; }
+    100%{ top:110%; }
 }
 
-h1{
-    font-size:40px;
-    margin-bottom:10px;
-}
+h1{ font-size:36px; }
 
 input{
     padding:10px;
@@ -121,146 +76,130 @@ button{
     background:#222;
     color:white;
     cursor:pointer;
+    margin-top:5px;
 }
+button:hover{ background:#000; }
 
-button:hover{
-    background:#000;
+/* POPUP */
+.popup{
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:rgba(0,0,0,0.7);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    visibility:hidden;
 }
-	
-	.music-btn{
-    background:#000;
-    color:#fff;
-    padding:10px 20px;
-    border:none;
-    border-radius:8px;
-    font-size:16px;
-    margin-top:15px;
-    cursor:pointer;
-}
-.music-btn:hover{
-    background:#ffcc00;
-    color:#000;
-}
-
-#linkBox{
-    margin-top:15px;
-    padding:10px;
+.popup-content{
     background:white;
     color:black;
-    border-radius:6px;
-    display:none;
-    word-break:break-all;
-    cursor:pointer;
+    padding:30px;
+    border-radius:15px;
+    animation:zoom 0.5s ease;
 }
-
-audio{
-    display:none;
+@keyframes zoom{
+    from{transform:scale(0.5);}
+    to{transform:scale(1);}
 }
 
 </style>
 </head>
-
 <body>
 
-<img src="top.gif" class="top-img">
-	
-<div class="dev-bar">
-Developer by Bhupendra
-</div>
+<!-- TOP GIF -->
+<img src="top.gif" class="top-gif">
 
-<img src="left.png" class="left-img">
-<img src="right.png" class="right-img">
+<!-- SIDE IMAGES LEFT -->
+<img src="left.png" class="side left">
+<img src="right.png" class="side left" style="animation-delay:2s">
+<img src="left.png" class="side left" style="animation-delay:4s">
+<img src="right.png" class="side left" style="animation-delay:6s">
 
-<audio id="bgmusic" src="song2.mp3" autoplay loop></audio>
-<div class="container">
+<!-- SIDE IMAGES RIGHT -->
+<img src="left.png" class="side right">
+<img src="right.png" class="side right" style="animation-delay:2s">
+<img src="left.png" class="side right" style="animation-delay:4s">
+<img src="right.png" class="side right" style="animation-delay:6s">
 
+<!-- PROFILE IMAGE -->
 <div class="circle-img">
-    <img src="1021.jpg" alt="Profile">
+<img src="1021.jpg">
 </div>
 
 <h1>🌈 Happy Holi 🌈</h1>
-<img src="img1.png" class="main-img">
-<h2 id="fromText">From: Your Friend</h2>
-<h3 id="toText">To: Special Person</h3>
+
+<h2 id="messageText">
+भूपेंद्र प्रजापति की तरफ से आपको होली की हार्दिक शुभकामनाएं 🎉
+</h2>
 
 <h3>Create Your Own Link</h3>
 
 <input type="text" id="sender" placeholder="Enter Your Name"><br>
-<input type="text" id="receiver" placeholder="Enter Receiver Number"><br>
+<input type="text" id="receiver" placeholder="Enter Receiver Name"><br>
 
-<button onclick="generateLink()">Generate Link</button>
+<button onclick="generateLink()">Generate Link</button><br>
 
-<div id="linkBox" onclick="copyLink()"></div>
+<button onclick="playMusic()">🎵 Play Music</button>
 
+<!-- POPUP -->
+<div class="popup" id="popupBox" onclick="playGreeting()">
+<div class="popup-content">
+<h2>🎁 Happy Holi 🎁</h2>
+<p>Click Here</p>
 </div>
-<audio id="bgmusic" src="song2.mp3" loop></audio>
-<button onclick="playMusic()" class="music-btn">
-🎵 Play Music
-</button>
-<script>
-function generateLink(){
-    var name = document.getElementById("sender").value;
-    var number = document.getElementById("receiver").value;
+</div>
 
-    if(name=="" || number==""){
+<!-- AUDIO -->
+<audio id="bgmusic" src="song2.mp3" loop></audio>
+<audio id="greetingSound" src="holi.mp3"></audio>
+
+<script>
+
+function generateLink(){
+    var name=document.getElementById("sender").value;
+    var receiver=document.getElementById("receiver").value;
+
+    if(name==""||receiver==""){
         alert("Please fill both fields");
         return;
     }
 
-    var link = window.location.origin + window.location.pathname + 
-    "?name=" + encodeURIComponent(name) + 
-    "&num=" + encodeURIComponent(number);
+    var link=window.location.origin+window.location.pathname+
+    "?name="+encodeURIComponent(name);
 
-    var box = document.getElementById("linkBox");
-    box.style.display="block";
-    box.innerHTML = link;
+    alert("Link Generated:\n"+link);
 }
 
-function copyLink(){
-    var text = document.getElementById("linkBox").innerText;
-    navigator.clipboard.writeText(text).then(function(){
-        alert("Link Copied Successfully!");
-    });
-}
-
-const params = new URLSearchParams(window.location.search);
+/* URL Name */
+const params=new URLSearchParams(window.location.search);
 
 if(params.has("name")){
-    document.getElementById("fromText").innerHTML =
-    "From: " + params.get("name");
+    let senderName=params.get("name");
+    document.getElementById("messageText").innerHTML=
+    senderName+" की तरफ से आपको होली की हार्दिक शुभकामनाएं 🎉";
+    document.getElementById("popupBox").style.visibility="visible";
 }
 
-if(params.has("num")){
-    document.getElementById("toText").innerHTML =
-    "To: " + params.get("num");
+/* Popup click */
+function playGreeting(){
+    var greet=document.getElementById("greetingSound");
+    var bg=document.getElementById("bgmusic");
+
+    greet.play();
+    greet.onended=function(){
+        bg.play();
+    };
+
+    document.getElementById("popupBox").style.visibility="hidden";
 }
-</script>
-	
-<script>
+
+/* Manual music button */
 function playMusic(){
-    var music = document.getElementById("bgmusic");
-    music.play();
+    document.getElementById("bgmusic").play();
 }
+
 </script>
+
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
