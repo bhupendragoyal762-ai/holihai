@@ -43,27 +43,13 @@ body{
     0%{filter:hue-rotate(0deg);}
     100%{filter:hue-rotate(360deg);}
 }
-    .dev-name{
+
+.dev-name{
     font-size:18px;
     font-weight:bold;
     margin-top:8px;
     letter-spacing:1px;
-    color:white;
     text-shadow: 2px 2px 8px black;
-    animation: glowText 2s ease-in-out infinite alternate;
-}
-
-@keyframes glowText{
-    from{
-        text-shadow: 0 0 5px #fff,
-                     0 0 10px #ff00cc,
-                     0 0 15px #ff00cc;
-    }
-    to{
-        text-shadow: 0 0 10px #fff,
-                     0 0 20px #00ffcc,
-                     0 0 30px #00ffcc;
-    }
 }
 
 /* SIDE ANIMATION */
@@ -148,10 +134,10 @@ button:hover{ background:#000; }
 <div class="circle-img">
 <img src="1021.jpg">
 </div>
-    
+
 <div class="dev-name">
-    Developer by Bhupendra
-    </div>
+Developer by Bhupendra
+</div>
 
 <h1>🌈 Happy Holi 🌈</h1>
 
@@ -159,13 +145,11 @@ button:hover{ background:#000; }
 आप और आपके पूरे परिवार को हमारी तरफ से होली की हार्दिक शुभकामनाएं 🎉
 </h2>
 
-<h3>Create Your Own Link</h3>
+<h3>अपना नाम डालें और आगे भेजें</h3>
 
-<input type="text" id="sender" placeholder="Enter Your Name"><br>
-<input type="text" id="receiver" placeholder="Enter Receiver Name"><br>
+<input type="text" id="sender" placeholder="अपना नाम लिखें"><br>
 
 <button onclick="generateLink()">Generate Link</button><br>
-
 <button onclick="playMusic()">🎵 Play Music</button>
 
 <!-- POPUP -->
@@ -182,33 +166,34 @@ button:hover{ background:#000; }
 
 <script>
 
+/* Generate + Auto Copy */
 function generateLink(){
     var name=document.getElementById("sender").value;
-    var receiver=document.getElementById("receiver").value;
 
-    if(name=="" || receiver==""){
-        alert("Please fill both fields");
+    if(name==""){
+        alert("Please enter your name");
         return;
     }
 
     var link=window.location.origin+window.location.pathname+
     "?name="+encodeURIComponent(name);
 
-    // AUTO COPY
     navigator.clipboard.writeText(link).then(function(){
-        alert("Link Generated & Copied Successfully ✅\n\n"+link);
-    }).catch(function(){
-        alert("Copy failed! Your link:\n"+link);
+        alert("Link Copied Successfully ✅\nAb ise kisi ko bhi bhej do.");
     });
 }
 
-/* URL Name */
+/* URL se naam lena */
 const params=new URLSearchParams(window.location.search);
 
 if(params.has("name")){
     let senderName=params.get("name");
+
     document.getElementById("messageText").innerHTML=
     senderName+" की तरफ से आपको होली की हार्दिक शुभकामनाएं 🎉";
+
+    document.getElementById("sender").value=senderName;
+
     document.getElementById("popupBox").style.visibility="visible";
 }
 
@@ -225,7 +210,7 @@ function playGreeting(){
     document.getElementById("popupBox").style.visibility="hidden";
 }
 
-/* Manual music button */
+/* Manual music */
 function playMusic(){
     document.getElementById("bgmusic").play();
 }
@@ -234,5 +219,3 @@ function playMusic(){
 
 </body>
 </html>
-
-
