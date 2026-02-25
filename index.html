@@ -50,6 +50,20 @@ body{
     margin-top:8px;
     letter-spacing:1px;
     text-shadow: 2px 2px 8px black;
+    animation: glowText 2s ease-in-out infinite alternate;
+}
+
+@keyframes glowText{
+    from{
+        text-shadow: 0 0 5px #fff,
+                     0 0 10px #ff00cc,
+                     0 0 15px #ff00cc;
+    }
+    to{
+        text-shadow: 0 0 10px #fff,
+                     0 0 20px #00ffcc,
+                     0 0 30px #00ffcc;
+    }
 }
 
 /* SIDE ANIMATION */
@@ -110,27 +124,27 @@ button:hover{ background:#000; }
     from{transform:scale(0.5);}
     to{transform:scale(1);}
 }
-
 </style>
 </head>
+
 <body>
 
 <!-- TOP GIF -->
 <img src="top.gif" class="top-gif">
 
-<!-- SIDE IMAGES LEFT -->
+<!-- SIDE LEFT -->
 <img src="left.png" class="side left">
 <img src="right.png" class="side left" style="animation-delay:2s">
 <img src="left.png" class="side left" style="animation-delay:4s">
 <img src="right.png" class="side left" style="animation-delay:6s">
 
-<!-- SIDE IMAGES RIGHT -->
+<!-- SIDE RIGHT -->
 <img src="left.png" class="side right">
 <img src="right.png" class="side right" style="animation-delay:2s">
 <img src="left.png" class="side right" style="animation-delay:4s">
 <img src="right.png" class="side right" style="animation-delay:6s">
 
-<!-- PROFILE IMAGE -->
+<!-- PROFILE -->
 <div class="circle-img">
 <img src="1021.jpg">
 </div>
@@ -166,39 +180,43 @@ Developer by Bhupendra
 
 <script>
 
+/* Page Load */
+window.onload = function(){
+
+    const params = new URLSearchParams(window.location.search);
+    const message = document.getElementById("messageText");
+
+    if(params.has("name")){
+        let senderName = params.get("name");
+
+        message.innerHTML =
+        senderName + " की तरफ से आपको होली की हार्दिक शुभकामनाएं 🎉";
+
+        document.getElementById("popupBox").style.visibility="visible";
+    }
+};
+
 /* Generate + Auto Copy */
 function generateLink(){
-    var name=document.getElementById("sender").value;
+
+    var name = document.getElementById("sender").value.trim();
 
     if(name==""){
-        alert("Please enter your name");
+        alert("अपना नाम जरूर लिखें");
         return;
     }
 
-    var link=window.location.origin+window.location.pathname+
-    "?name="+encodeURIComponent(name);
+    var link = window.location.origin + window.location.pathname +
+    "?name=" + encodeURIComponent(name);
 
     navigator.clipboard.writeText(link).then(function(){
-        alert("Link Copied Successfully ✅\nAb ise kisi ko bhi bhej do.");
+        alert("Link Copied Successfully ✅\nअब इसे आगे भेजें");
     });
-}
-
-/* URL se naam lena */
-const params=new URLSearchParams(window.location.search);
-
-if(params.has("name")){
-    let senderName=params.get("name");
-
-    document.getElementById("messageText").innerHTML=
-    senderName+" की तरफ से आपको होली की हार्दिक शुभकामनाएं 🎉";
-
-    document.getElementById("sender").value=senderName;
-
-    document.getElementById("popupBox").style.visibility="visible";
 }
 
 /* Popup click */
 function playGreeting(){
+
     var greet=document.getElementById("greetingSound");
     var bg=document.getElementById("bgmusic");
 
@@ -219,6 +237,3 @@ function playMusic(){
 
 </body>
 </html>
-
-
-
