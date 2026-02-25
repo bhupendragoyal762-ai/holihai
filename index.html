@@ -186,7 +186,7 @@ function generateLink(){
     var name=document.getElementById("sender").value;
     var receiver=document.getElementById("receiver").value;
 
-    if(name==""||receiver==""){
+    if(name=="" || receiver==""){
         alert("Please fill both fields");
         return;
     }
@@ -194,7 +194,12 @@ function generateLink(){
     var link=window.location.origin+window.location.pathname+
     "?name="+encodeURIComponent(name);
 
-    alert("Link Generated:\n"+link);
+    // AUTO COPY
+    navigator.clipboard.writeText(link).then(function(){
+        alert("Link Generated & Copied Successfully ✅\n\n"+link);
+    }).catch(function(){
+        alert("Copy failed! Your link:\n"+link);
+    });
 }
 
 /* URL Name */
@@ -229,4 +234,5 @@ function playMusic(){
 
 </body>
 </html>
+
 
