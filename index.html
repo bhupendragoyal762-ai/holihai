@@ -164,6 +164,172 @@ Developer by Bhupendra
 <audio id="bgmusic" src="song2.mp3" loop></audio>
 <audio id="greetingSound" src="holi.mp3"></audio>
 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Holi</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    text-align:center;
+    color:white;
+    min-height:100vh;
+    background: url("photo.jpeg") no-repeat center center fixed;
+    background-size: cover;
+    overflow-x:hidden;
+}
+
+/* TOP GIF */
+.top-gif{
+    width:200px;
+    margin-top:20px;
+}
+
+/* Circular Profile */
+.circle-img{
+    width:120px;
+    height:120px;
+    margin:20px auto;
+    border-radius:50%;
+    padding:5px;
+    background: linear-gradient(45deg,#00ffcc,#ff00cc,#ffcc00);
+    animation: glow 3s linear infinite;
+}
+.circle-img img{
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    object-fit:cover;
+}
+@keyframes glow{
+    0%{filter:hue-rotate(0deg);}
+    100%{filter:hue-rotate(360deg);}
+}
+
+.dev-name{
+    font-size:18px;
+    font-weight:bold;
+    margin-top:8px;
+    letter-spacing:1px;
+    text-shadow: 2px 2px 8px black;
+}
+
+/* SIDE ANIMATION */
+.side{
+    position:fixed;
+    top:-100px;
+    width:60px;
+    animation:fall 10s linear infinite;
+}
+.left{ left:5px; }
+.right{ right:5px; }
+
+@keyframes fall{
+    0%{ top:-100px; }
+    100%{ top:110%; }
+}
+
+h1{ font-size:36px; }
+
+input{
+    padding:10px;
+    width:250px;
+    border:none;
+    border-radius:6px;
+    margin:8px 0;
+}
+
+button{
+    padding:10px 20px;
+    border:none;
+    border-radius:6px;
+    background:#222;
+    color:white;
+    cursor:pointer;
+    margin-top:5px;
+}
+button:hover{ background:#000; }
+
+/* POPUP */
+.popup{
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:rgba(0,0,0,0.7);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    visibility:hidden;
+}
+.popup-content{
+    background:white;
+    color:black;
+    padding:30px;
+    border-radius:15px;
+    animation:zoom 0.5s ease;
+}
+@keyframes zoom{
+    from{transform:scale(0.5);}
+    to{transform:scale(1);}
+}
+
+</style>
+</head>
+<body>
+
+<!-- TOP GIF -->
+<img src="top.gif" class="top-gif">
+
+<!-- SIDE IMAGES LEFT -->
+<img src="left.png" class="side left">
+<img src="right.png" class="side left" style="animation-delay:2s">
+<img src="left.png" class="side left" style="animation-delay:4s">
+<img src="right.png" class="side left" style="animation-delay:6s">
+
+<!-- SIDE IMAGES RIGHT -->
+<img src="left.png" class="side right">
+<img src="right.png" class="side right" style="animation-delay:2s">
+<img src="left.png" class="side right" style="animation-delay:4s">
+<img src="right.png" class="side right" style="animation-delay:6s">
+
+<!-- PROFILE IMAGE -->
+<div class="circle-img">
+<img src="1021.jpg">
+</div>
+
+<div class="dev-name">
+Developer by Bhupendra
+</div>
+
+<h1>🌈 Happy Holi 🌈</h1>
+
+<h2 id="messageText">
+आप और आपके पूरे परिवार को हमारी तरफ से होली की हार्दिक शुभकामनाएं 🎉
+</h2>
+
+<h3>अपना नाम डालें और आगे भेजें</h3>
+
+<input type="text" id="sender" placeholder="अपना नाम लिखें"><br>
+
+<button onclick="generateLink()">Generate Link</button><br>
+<button onclick="playMusic()">🎵 Play Music</button>
+
+<!-- POPUP -->
+<div class="popup" id="popupBox" onclick="playGreeting()">
+<div class="popup-content">
+<h2>🎁 Happy Holi 🎁</h2>
+<p>Click Here</p>
+</div>
+</div>
+
+<!-- AUDIO -->
+<audio id="bgmusic" src="song2.mp3" loop></audio>
+<audio id="greetingSound" src="holi.mp3"></audio>
+
 <script>
 
 /* Generate + Auto Copy */
@@ -219,3 +385,4 @@ function playMusic(){
 
 </body>
 </html>
+
